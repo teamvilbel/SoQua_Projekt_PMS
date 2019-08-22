@@ -6,6 +6,10 @@ package application.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Observable;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * @author Noah Ruben
@@ -15,16 +19,17 @@ import java.util.List;
  */
 public class ReportInformations {
 
-	List<MedikamentProTagBean> medikamentProTagList;
+	ObservableList<MedikamentProTagBean> medikamentProTagList;
 	private Date selectedDay;
 	private String selectedMedicine;
+	private String lastFile;
 	private boolean createDiagramm;
 
 	/**
 	 * Default-Konstruktor
 	 */
 	public ReportInformations() {
-		medikamentProTagList = new ArrayList<MedikamentProTagBean>();
+		medikamentProTagList = FXCollections.observableArrayList();
 	}
 
 	/**
@@ -33,7 +38,7 @@ public class ReportInformations {
 	 * @param selectedMedicine
 	 * @param createDiagramm
 	 */
-	public ReportInformations(List<MedikamentProTagBean> medikamentProTagList, Date selectedDay,
+	public ReportInformations(ObservableList<MedikamentProTagBean> medikamentProTagList, Date selectedDay,
 			String selectedMedicine, boolean createDiagramm) {
 		this.medikamentProTagList = medikamentProTagList;
 		this.selectedDay = selectedDay;
@@ -44,7 +49,7 @@ public class ReportInformations {
 	/**
 	 * @return the medikamentProTagList
 	 */
-	public List<MedikamentProTagBean> getMedikamentProTagList() {
+	public ObservableList<MedikamentProTagBean> getMedikamentProTagList() {
 		return medikamentProTagList;
 	}
 
@@ -70,6 +75,20 @@ public class ReportInformations {
 	}
 
 	/**
+	 * @return the lastFile
+	 */
+	public String getLastFile() {
+		return lastFile;
+	}
+
+	/**
+	 * @param lastFile the lastFile to set
+	 */
+	public void setLastFile(String lastFile) {
+		this.lastFile = lastFile;
+	}
+
+	/**
 	 * @param createDiagramm the createDiagramm to set
 	 */
 	public void setCreateDiagramm(boolean createDiagramm) {
@@ -79,7 +98,7 @@ public class ReportInformations {
 	/**
 	 * @param medikamentProTagList the medikamentProTagList to set
 	 */
-	public void setMedikamentProTagList(List<MedikamentProTagBean> medikamentProTagList) {
+	public void setMedikamentProTagList(ObservableList<MedikamentProTagBean> medikamentProTagList) {
 		this.medikamentProTagList = medikamentProTagList;
 	}
 

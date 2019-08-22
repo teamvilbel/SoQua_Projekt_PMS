@@ -104,8 +104,8 @@ public class SettingsViewController extends Controller {
 			SettingsViewController.this.getMainController().getReportInformations().setCreateDiagramm(new Boolean(diagrammRadioButton.selectedProperty().getValue().toString()));
 			SettingsViewController.this.getMainController().getReportInformations().setSelectedDay(dayDropDownButton.getValue());
 			SettingsViewController.this.getMainController().getReportInformations().setSelectedMedicine(medicationDropDownButton.getValue());
-			SettingsViewController.this.getMainController().getReportInformations().setMedikamentProTagList(medikamentProTagList);
-
+			SettingsViewController.this.getMainController().getReportInformations().getMedikamentProTagList().addAll(medikamentProTagList);
+			
 			SettingsViewController.this.getMainController().goToReportView();
 		}
 	};
@@ -121,6 +121,7 @@ public class SettingsViewController extends Controller {
 				SettingsViewController.this.medikamentProTagList = csvParser.parseFile();
 				SettingsViewController.this.populateDayDropDown();
 				SettingsViewController.this.populateMedicineDropDown();
+				SettingsViewController.this.getMainController().getReportInformations().setLastFile(possibleFile.getAbsolutePath());
 				
 			} catch (FileNotFoundException fileNotFoundException) {
 				fileNotFoundException.printStackTrace();
@@ -206,6 +207,9 @@ public class SettingsViewController extends Controller {
 	public void initialize(URL location, ResourceBundle resources) {
 		assertions();
 		bindComponents();
+		if ( getMainController().getReportInformations().getLastFile() != null && !getMainController().getReportInformations().getLastFile().isEmpty() ) {
+			fileTextField.setText(getMainController().getReportInformations().getLastFile());
+		}
 	}
 
 }

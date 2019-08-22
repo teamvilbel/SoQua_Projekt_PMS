@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="842.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="842.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.20001220703125" minWidth="10.0" prefWidth="101.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="667.600048828125" minWidth="10.0" prefWidth="667.600048828125" />
@@ -51,7 +52,7 @@
             <Insets top="25.0" />
          </GridPane.margin>
       </Text>
-      <Text layoutX="114.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gesamtkosten der Verschreibungen:" textAlignment="CENTER" wrappingWidth="191.466796875" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+      <Text layoutX="114.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gesamt Anzahl der Verschreibungen:" textAlignment="CENTER" wrappingWidth="208.466796875" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
       <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="25.0" />
@@ -90,12 +91,19 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="informationOutputField" editable="false" prefHeight="103.0" prefWidth="527.0" />
             <Button fx:id="diagramButton" mnemonicParsing="false" text="Diagramm anzeigen" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets right="9.0" />
                </GridPane.margin>
             </Button>
+            <TextArea fx:id="informationOutputField" editable="false" prefHeight="200.0" prefWidth="200.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </TextArea>
          </children>
       </GridPane>
    </children>
