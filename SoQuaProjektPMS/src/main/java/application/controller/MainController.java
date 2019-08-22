@@ -123,9 +123,10 @@ public class MainController {
 
 	/**
 	 * Starts the application with the BirthdaysOverview and possibly loaded file
+	 * @throws Exception 
 	 */
 	public void start() {
-//		TODO this.setActiveController(new BirthdaysOverviewController(this));
+		this.setActiveController(new SettingsViewController(this));
 		try {
 			this.replaceSceneContent("/application/view/Settings.fxml", this.getActiveController());
 		} catch (final Exception exception) {

@@ -58,7 +58,7 @@ public class AppStart extends Application {
 	}
 
 	@Override
-	public void start(final Stage stage) throws FileNotFoundException {
+	public void start(final Stage stage){
 		final MainController mainController = new MainController(stage);
 		mainController.start();
 	}
