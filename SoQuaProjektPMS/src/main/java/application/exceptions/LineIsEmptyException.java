@@ -1,7 +1,7 @@
 /**
  * 
  */
-package exceptions;
+package application.exceptions;
 
 /**
  * @author Noah Ruben Marvin Jakob

@@ -11,10 +11,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import beans.MedikamentProTagBean;
-import exceptions.LineCanNotBeParsedException;
-import exceptions.LineIsEmptyException;
-import utils.CSVParser;
+import application.exceptions.LineCanNotBeParsedException;
+import application.exceptions.LineIsEmptyException;
+import application.model.MedikamentProTagBean;
+import application.utils.CSVParser;
 
 class CSVParserTest {
 
