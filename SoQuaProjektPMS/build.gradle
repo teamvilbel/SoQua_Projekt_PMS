@@ -5,11 +5,12 @@
  * For more details take a look at the Java Libraries chapter in the Gradle
  * User Manual available at https://docs.gradle.org/5.4/userguide/java_library_plugin.html
  */
+apply plugin: 'java-library'
+apply plugin: 'application'
 
-plugins {
-    // Apply the java-library plugin to add support for Java Library
-    id 'java-library'
-}
+mainClassName = 'application.Main'
+version = '0.0.1'
+def name = 'Birthday Manager'
 
 repositories {
     // Use jcenter for resolving your dependencies.
@@ -26,4 +27,35 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation('org.junit.jupiter:junit-jupiter:5.5.1')
+}
+
+def getDate() {
+    return new Date().format('dd.MM.yyyy_HH:mm:ss')
+}
+
+task customFatJar(type: Jar) {
+	group = "custom"
+    manifest {
+        attributes 'Implementation-Title': name,  
+        	'Implementation-Version': version,
+        	'Main-Class': 'application.AppStart',
+        	'Build-Time-ISO-8601': getDate()
+    }
+    baseName = 'BirthdayManager'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+task copyBuild(type: Copy) {
+	group = "custom"
+    from "$buildDir/jar"
+    into "C:/Users/Admin/Desktop"
+    dependsOn 'versionJS'
+}
+
+tasks.withType(Jar) {
+	destinationDir = file("$rootDir/build/jar")
+}
+tasks.withType(Javadoc) {
+	destinationDir = file("$rootDir/build/doc")
 }
