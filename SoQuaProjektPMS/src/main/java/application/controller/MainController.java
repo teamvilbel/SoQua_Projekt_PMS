@@ -3,29 +3,17 @@
  */
 package application.controller;
 
-import java.awt.Desktop;
-import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 import application.model.ReportInformations;
 import javafx.application.Platform;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.MenuItem;
-import javafx.scene.image.Image;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 /**
@@ -38,7 +26,13 @@ public class MainController {
 	private ReportInformations reportInformations;
 
 	/**
-	 * Dieser "Handler" ist für das ordnungsgemäße Schließen der Anwendung zuständig. 
+	 * Der Sandard Datums-Formatierer.
+	 */
+	public static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");
+
+	/**
+	 * Dieser "Handler" ist für das ordnungsgemäße Schließen der Anwendung
+	 * zuständig.
 	 */
 	final EventHandler closeAppHandler = new EventHandler<Event>() {
 		@Override
@@ -74,7 +68,8 @@ public class MainController {
 	 *
 	 * @see SettingsViewController
 	 */
-	public void goToSettingdView() {
+	public void goToSettingsView() {
+		System.out.println("goToSettingsView");
 		this.setActiveController(new SettingsViewController(this));
 		try {
 			this.replaceSceneContent("/application/view/SettingsView.fxml", this.getActiveController());
@@ -82,7 +77,7 @@ public class MainController {
 			exception.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Swiches scenes to the ReportView. Generates a new Controller.
 	 *
@@ -96,7 +91,7 @@ public class MainController {
 			exception.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Swiches scenes to the DiagramView. Generates a new Controller.
 	 *
@@ -110,8 +105,6 @@ public class MainController {
 			exception.printStackTrace();
 		}
 	}
-
-
 
 	/**
 	 * @param fxmlPath   the path of the FXML-File representing the view
@@ -149,7 +142,8 @@ public class MainController {
 
 	/**
 	 * Starts the application with the BirthdaysOverview and possibly loaded file
-	 * @throws Exception 
+	 * 
+	 * @throws Exception
 	 */
 	public void start() {
 		this.setActiveController(new SettingsViewController(this));

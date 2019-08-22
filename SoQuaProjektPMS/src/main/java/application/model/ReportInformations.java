@@ -96,5 +96,31 @@ public class ReportInformations {
 	public void setSelectedMedicine(String selectedMedicine) {
 		this.selectedMedicine = selectedMedicine;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ReportInformations [");
+		if (medikamentProTagList != null) {
+			builder.append("medikamentProTagList=");
+			builder.append(medikamentProTagList);
+			builder.append(", ");
+		}
+		if (selectedDay != null) {
+			builder.append("selectedDay=");
+			builder.append(selectedDay);
+			builder.append(", ");
+		}
+		if (selectedMedicine != null) {
+			builder.append("selectedMedicine=");
+			builder.append(selectedMedicine);
+			builder.append(", ");
+		}
+		builder.append("createDiagramm=");
+		builder.append(createDiagramm);
+		builder.append("]");
+		return builder.toString();
+	}
+
 
 }

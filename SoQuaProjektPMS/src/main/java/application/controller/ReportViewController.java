@@ -6,6 +6,8 @@ package application.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -53,12 +55,22 @@ public class ReportViewController extends Controller {
     @FXML // fx:id="diagramButton"
     private Button diagramButton; // Value injected by FXMLLoader
 
+	private EventHandler<ActionEvent> backToSettingsHandler = new EventHandler<ActionEvent>() {
+		
+		@Override
+		public void handle(ActionEvent event) {
+			ReportViewController.this.getMainController().goToSettingsView();
+		}
+	};
+
 	/**
 	 * @param mainController
 	 */
 	public ReportViewController(MainController mainController) {
 		super(mainController);
-		// TODO Auto-generated constructor stub
+//		System.out.println("ads");
+//		System.out.println(this.getMainController().getReportInformations());
+//		System.out.println("ads");
 	}
 
 	@Override
@@ -83,8 +95,11 @@ public class ReportViewController extends Controller {
 
 	@Override
 	protected void bindComponents() {
-		// TODO Auto-generated method stub
-		
+		backButton.addEventHandler(ActionEvent.ANY, this.backToSettingsHandler);
+		diagramButton.addEventHandler(ActionEvent.ANY, x ->{
+			System.out.println("asd");
+			getMainController().goToDiagramView();
+		});
 	}
 
 }
