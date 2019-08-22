@@ -47,11 +47,10 @@ public abstract class Controller implements Initializable{
 	 * 
 	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
 	 */
-	@Override
-	public void initialize(final URL location, final ResourceBundle resources){
-		this.assertions();
-		this.bindComponents();
-	}
-
+	public abstract void initialize(final URL location, final ResourceBundle resources);
+	
+	/**
+	 * This method binds all UI-Components to their responding handlers or listeners. 
+	 */
 	protected abstract void bindComponents();
 }

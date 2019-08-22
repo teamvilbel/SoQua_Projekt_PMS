@@ -69,13 +69,40 @@ public class MainController {
 	/**
 	 * Swiches scenes to the SettingsView. Generates a new Controller.
 	 *
-	 * @see BirthdaysOverviewController
+	 * @see SettingsViewController
 	 */
-	public void goToSettingdiew() {
-//		this.setActiveController(new BirthdaysOverviewController(this));
+	public void goToSettingdView() {
+		this.setActiveController(new SettingsViewController(this));
 		try {
-			this.replaceSceneContent("/application/view/Settings.fxml", this.getActiveController());
-
+			this.replaceSceneContent("/application/view/SettingsView.fxml", this.getActiveController());
+		} catch (final Exception exception) {
+			exception.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Swiches scenes to the ReportView. Generates a new Controller.
+	 *
+	 * @see ReportViewController
+	 */
+	public void goToReportView() {
+		this.setActiveController(new SettingsViewController(this));
+		try {
+			this.replaceSceneContent("/application/view/ReportView.fxml", this.getActiveController());
+		} catch (final Exception exception) {
+			exception.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Swiches scenes to the DiagramView. Generates a new Controller.
+	 *
+	 * @see DiagramView
+	 */
+	public void goToDiagramView() {
+		this.setActiveController(new DiagramViewController(this));
+		try {
+			this.replaceSceneContent("/application/view/DiagramView.fxml", this.getActiveController());
 		} catch (final Exception exception) {
 			exception.printStackTrace();
 		}
@@ -124,7 +151,7 @@ public class MainController {
 	public void start() {
 		this.setActiveController(new SettingsViewController(this));
 		try {
-			this.replaceSceneContent("/application/view/Settings.fxml", this.getActiveController());
+			this.replaceSceneContent("/application/view/SettingsView.fxml", this.getActiveController());
 		} catch (final Exception exception) {
 			exception.printStackTrace();
 		}
