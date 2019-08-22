@@ -22,6 +22,8 @@ import javafx.stage.FileChooser.ExtensionFilter;
  *
  */
 public class SettingsViewController extends Controller {
+	
+	private File currentFile;
 
 	@FXML // ResourceBundle that was given to the FXMLLoader
 	private ResourceBundle resources;
@@ -74,7 +76,6 @@ public class SettingsViewController extends Controller {
 	 */
 	public SettingsViewController(MainController mainController) {
 		super(mainController);
-		// TODO Auto-generated constructor stub
 	}
 
 
@@ -90,7 +91,10 @@ public class SettingsViewController extends Controller {
 
 	@Override
 	protected void bindComponents() {
-		// TODO Auto-generated method stub
+		searchButton.addEventHandler(ActionEvent.ANY, this.chooseFileHandler);
+		createReportButton.addEventHandler(ActionEvent.ANY, x ->{
+			this.getMainController().goToReportView();
+		});
 	}
 
 	@Override

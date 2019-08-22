@@ -7,6 +7,7 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 
+import application.model.ReportInformations;
 import javafx.application.Platform;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
@@ -34,6 +35,7 @@ import javafx.stage.Stage;
 public class MainController {
 	private final Stage stage;
 	private Controller activeController = null;
+	private ReportInformations reportInformations;
 
 	/**
 	 * Dieser "Handler" ist für das ordnungsgemäße Schließen der Anwendung zuständig. 
@@ -53,6 +55,7 @@ public class MainController {
 	public MainController(final Stage stage) {
 		this.stage = stage;
 		stage.setOnCloseRequest(this.closeAppHandler);
+		reportInformations = new ReportInformations();
 	}
 
 	public Controller getActiveController() {
@@ -86,7 +89,7 @@ public class MainController {
 	 * @see ReportViewController
 	 */
 	public void goToReportView() {
-		this.setActiveController(new SettingsViewController(this));
+		this.setActiveController(new ReportViewController(this));
 		try {
 			this.replaceSceneContent("/application/view/ReportView.fxml", this.getActiveController());
 		} catch (final Exception exception) {
@@ -155,6 +158,20 @@ public class MainController {
 		} catch (final Exception exception) {
 			exception.printStackTrace();
 		}
+	}
+
+	/**
+	 * @return the reportInformations
+	 */
+	public ReportInformations getReportInformations() {
+		return reportInformations;
+	}
+
+	/**
+	 * @param reportInformations the reportInformations to set
+	 */
+	public void setReportInformations(ReportInformations reportInformations) {
+		this.reportInformations = reportInformations;
 	}
 
 }
