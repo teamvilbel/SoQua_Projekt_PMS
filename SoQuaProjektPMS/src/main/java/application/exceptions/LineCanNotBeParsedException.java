@@ -1,9 +1,9 @@
 /**
  * 
  */
-package exceptions;
+package application.exceptions;
 
-import beans.MedikamentProTagBean;
+import application.model.MedikamentProTagBean;
 
 /**
  * @author Noah Ruben Marvin Jakob

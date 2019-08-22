@@ -10,9 +10,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import beans.MedikamentProTagBean;
-import exceptions.LineCanNotBeParsedException;
-import exceptions.LineIsEmptyException;
+import application.exceptions.LineCanNotBeParsedException;
+import application.exceptions.LineIsEmptyException;
+import application.model.MedikamentProTagBean;
 
 /**
  * @author x

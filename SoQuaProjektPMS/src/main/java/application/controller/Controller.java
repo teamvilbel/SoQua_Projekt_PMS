@@ -4,6 +4,9 @@
 package application.controller;
 
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.Initializable;
 
 /**
@@ -28,12 +31,27 @@ public abstract class Controller implements Initializable{
 	public MainController getMainController(){
 		return this.mainController;
 	}
-
+	
 	/**
-	 * Called if the Localisation of the view needs to be updated.
-	 * <p>
-	 * Before calling this the right locale needs to be set in
-	 * {@link application.util.localisation.LangResourceManager}
+	 * All assertions for the controller. Checks if all FXML-Components have been
+	 * loaded properly.
 	 */
-	public abstract void updateLocalisation();
+	protected abstract void assertions();
+	
+	
+	/**
+	 * Initializing everything needed by the Controller.
+	 * <p>
+	 * 
+	 * Has to contain atleast {@link Controller#assertions()} and {@link Controller#bindComponents()} 
+	 * 
+	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
+	 */
+	@Override
+	public void initialize(final URL location, final ResourceBundle resources){
+		this.assertions();
+		this.bindComponents();
+	}
+
+	protected abstract void bindComponents();
 }
