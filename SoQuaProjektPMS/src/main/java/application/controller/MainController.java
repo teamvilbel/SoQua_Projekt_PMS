@@ -117,10 +117,6 @@ public class MainController {
 		this.activeController = activeController;
 	}
 
-	public void settingsChanged() {
-		this.getActiveController().updateLocalisation();
-	}
-
 	/**
 	 * Starts the application with the BirthdaysOverview and possibly loaded file
 	 * @throws Exception 
