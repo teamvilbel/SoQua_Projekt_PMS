@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="743.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="377.6000183105469" minHeight="10.0" prefHeight="363.200048828125" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="194.79999389648438" minHeight="10.0" prefHeight="137.59995117187498" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <PieChart />
+      <PieChart />
+      <ToggleButton mnemonicParsing="false" prefHeight="68.0" prefWidth="149.0" text="Wechsle Ansicht" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+   </children>
+</GridPane>

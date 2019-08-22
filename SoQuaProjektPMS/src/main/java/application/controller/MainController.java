@@ -66,21 +66,20 @@ public class MainController {
 		return this.stage;
 	}
 
-//	/**
-//	 * Swiches scenes to the BirthdayOverview. Generates a new Controller.
-//	 *
-//	 * @see BirthdaysOverviewController
-//	 */
-//	public void goToBirthdaysOverview() {
+	/**
+	 * Swiches scenes to the SettingsView. Generates a new Controller.
+	 *
+	 * @see BirthdaysOverviewController
+	 */
+	public void goToSettingdiew() {
 //		this.setActiveController(new BirthdaysOverviewController(this));
-//		try {
-//			this.replaceSceneContent("/application/view/BirthdaysOverview.fxml", this.getActiveController());
-//
-//		} catch (final Exception exception) {
-//			this.LOG.catching(Level.ERROR, exception);
-//		}
-//		this.getSessionInfos().updateSubLists();
-//	}
+		try {
+			this.replaceSceneContent("/application/view/Settings.fxml", this.getActiveController());
+
+		} catch (final Exception exception) {
+			exception.printStackTrace();
+		}
+	}
 
 
 
@@ -106,8 +105,6 @@ public class MainController {
 		loader.setLocation(this.getClass().getResource(fxmlPath));
 		loader.setController(controller);
 		final Parent root = loader.load();
-		// TODO DO i really want this
-		// new JMetro(JMetro.Style.LIGHT).applyTheme(root);
 		final Scene scene = new Scene(root);
 		scene.getStylesheets().add("test.css");
 		this.stage.setScene(scene);
@@ -130,7 +127,7 @@ public class MainController {
 	public void start() {
 //		TODO this.setActiveController(new BirthdaysOverviewController(this));
 		try {
-			this.replaceSceneContent("/application/view/BirthdaysOverview.fxml", this.getActiveController());
+			this.replaceSceneContent("/application/view/Settings.fxml", this.getActiveController());
 		} catch (final Exception exception) {
 			exception.printStackTrace();
 		}
