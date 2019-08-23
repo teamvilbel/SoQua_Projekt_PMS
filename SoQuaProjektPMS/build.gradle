@@ -44,7 +44,6 @@ task copyBuild(type: Copy) {
 	group = "custom"
     from "$buildDir/jar"
     into "C:/Users/Admin/Desktop"
-    dependsOn 'versionJS'
 }
 
 tasks.withType(Jar) {
