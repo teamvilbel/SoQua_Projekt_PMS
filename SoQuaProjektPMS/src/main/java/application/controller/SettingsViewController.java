@@ -133,6 +133,8 @@ public class SettingsViewController extends Controller {
 		@Override
 		public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 			System.out.println("change");
+			SettingsViewController.this.dayDropDownButton.setItems(null);
+			SettingsViewController.this.medicationDropDownButton.setItems(null);
 			try {
 				File possibleFile = new File(fileTextField.getText());
 				CSVParser csvParser = new CSVParser(possibleFile);
