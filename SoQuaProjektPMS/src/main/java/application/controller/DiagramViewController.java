@@ -8,11 +8,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-import application.model.Diagram;
 import application.model.MedikamentProTagBean;
+import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 
@@ -56,9 +59,9 @@ public class DiagramViewController extends Controller {
 
   private void showFirstPieChart() {
     double gesamtkosten = 0d;
-    Diagram dia = new Diagram();
+    ObservableList<Data> pieChartData = FXCollections.observableArrayList();
     Map<String, Double> map = new HashMap<>();
-    dia.setTitle("Medikament - Kosten Übersicht");
+    pieChartCosts.setTitle("Medikament - Kosten Übersicht");
     for (MedikamentProTagBean medikament : medikamentProTagList) {
       if (map.containsKey(medikament.getMedikamentName())) {
         map.put(medikament.getMedikamentName(),
@@ -70,12 +73,16 @@ public class DiagramViewController extends Controller {
       }
     }
     for (Map.Entry<String, Double> entry : map.entrySet()) {
-      map.put(entry.getKey(), gesamtkosten / 100 * entry.getValue());
+      map.put(entry.getKey(), Math.round((100 / gesamtkosten * entry.getValue()) * 100d) / 100d);
     }
 
-    dia.setData(map);
+    for (Map.Entry<String, Double> entry : map.entrySet()) {
+      pieChartData.add(new PieChart.Data(entry.getKey(), entry.getValue()));
+    }
+    pieChartData.forEach(data -> data.nameProperty()
+        .bind(Bindings.concat(data.getName(), " ", data.pieValueProperty(), "%")));
+    pieChartCosts.setData(pieChartData);
 
-    pieChartCosts = dia.getPieChart();
     pieChartPrescriptions.setVisible(false);
     pieChartCosts.setVisible(true);
   }
@@ -83,11 +90,11 @@ public class DiagramViewController extends Controller {
 
 
   private void showSecondPieChart() {
-    Diagram dia = new Diagram();
     int gesamtVerschreibungen = 0;
+    ObservableList<Data> pieChartData = FXCollections.observableArrayList();
     Map<String, Integer> map = new HashMap<>();
     Map<String, Double> map2 = new HashMap<>();
-    dia.setTitle("Medikament - Verschreibungen Übersicht");
+    pieChartPrescriptions.setTitle("Medikament - Verschreibungen Übersicht");
     for (MedikamentProTagBean medikament : medikamentProTagList) {
       if (map.containsKey(medikament.getMedikamentName())) {
         map.put(medikament.getMedikamentName(),
@@ -99,12 +106,17 @@ public class DiagramViewController extends Controller {
       }
     }
     for (Map.Entry<String, Integer> entry : map.entrySet()) {
-      map2.put(entry.getKey(), (double) gesamtVerschreibungen / 100 * entry.getValue());
+      map2.put(entry.getKey(),
+          Math.round((100d / gesamtVerschreibungen * entry.getValue()) * 100d) / 100d);
     }
 
-    dia.setData(map2);
+    for (Map.Entry<String, Double> entry : map2.entrySet()) {
+      pieChartData.add(new PieChart.Data(entry.getKey(), entry.getValue()));
+    }
+    pieChartData.forEach(data -> data.nameProperty()
+        .bind(Bindings.concat(data.getName(), " ", data.pieValueProperty(), "%")));
+    pieChartPrescriptions.setData(pieChartData);
 
-    pieChartPrescriptions = dia.getPieChart();
     pieChartCosts.setVisible(false);
     pieChartPrescriptions.setVisible(true);
   }
@@ -141,6 +153,7 @@ public class DiagramViewController extends Controller {
       getMainController().goToReportView();
     });
     toggleButton.addEventHandler(ActionEvent.ANY, x -> {
+      firstPieChart = !firstPieChart;
       showPieChart();
     });
 
