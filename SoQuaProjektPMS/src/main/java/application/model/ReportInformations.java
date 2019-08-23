@@ -45,6 +45,34 @@ public class ReportInformations {
 		this.selectedMedicine = selectedMedicine;
 		this.setCreateDiagramm(createDiagramm);
 	}
+	
+	
+	public List<MedikamentProTagBean> getSelectedList(){
+		List<MedikamentProTagBean> list = FXCollections.observableArrayList();
+		if (selectedDay != null && selectedMedicine != null) {
+			for (MedikamentProTagBean bean : getMedikamentProTagList()) {
+				if (bean.getTag().equals(getSelectedDay()) && bean.getMedikamentName().matches(getSelectedMedicine())) {
+					list.add(bean);
+				}
+			}
+		} else if (getSelectedMedicine() != null) {
+			for (MedikamentProTagBean bean : getMedikamentProTagList()) {
+				if (bean.getMedikamentName().matches(getSelectedMedicine())) {
+					list.add(bean);
+				}
+			}
+		} else if (getSelectedDay() != null) {
+			for (MedikamentProTagBean bean : getMedikamentProTagList()) {
+				if (bean.getTag().equals(getSelectedDay())) {
+					list.add(bean);
+				}
+			}
+		} else {
+			list.addAll(medikamentProTagList);
+		}
+		return list;
+	}
+	
 
 	/**
 	 * @return the medikamentProTagList

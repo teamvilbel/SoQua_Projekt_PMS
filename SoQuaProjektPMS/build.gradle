@@ -10,7 +10,7 @@ apply plugin: 'application'
 
 mainClassName = 'application.Main'
 version = '0.0.1'
-def name = 'Birthday Manager'
+def name = 'Patienten Managment System'
 
 repositories {
     // Use jcenter for resolving your dependencies.
@@ -35,7 +35,7 @@ task customFatJar(type: Jar) {
         	'Main-Class': 'application.AppStart',
         	'Build-Time-ISO-8601': getDate()
     }
-    baseName = 'BirthdayManager'
+    baseName = 'PatientenManagmentSystem'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
