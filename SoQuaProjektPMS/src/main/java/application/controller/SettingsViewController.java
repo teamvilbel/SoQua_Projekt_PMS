@@ -145,11 +145,27 @@ public class SettingsViewController extends Controller {
 				
 			} catch (FileNotFoundException fileNotFoundException) {
 				fileNotFoundException.printStackTrace();
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Fehler");
+				alert.setHeaderText(fileNotFoundException.getMessage());
+				alert.showAndWait();
 			} catch (LineIsEmptyException lineIsEmptyException) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Fehler");
+				alert.setHeaderText(lineIsEmptyException.getMessage());
+				alert.showAndWait();
 				lineIsEmptyException.printStackTrace();
 			} catch (LineCanNotBeParsedException lineCanNotBeParsedException) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Fehler");
+				alert.setHeaderText(lineCanNotBeParsedException.getMessage());
+				alert.showAndWait();
 				lineCanNotBeParsedException.printStackTrace();
 			} catch (IOException exception) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Fehler");
+				alert.setHeaderText(exception.getMessage());
+				alert.showAndWait();
 				exception.printStackTrace();
 			}
 		}
