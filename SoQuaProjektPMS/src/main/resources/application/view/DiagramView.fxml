@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ToggleButton?>
@@ -19,7 +20,10 @@
    <children>
       <PieChart fx:id="pieChartCosts" GridPane.columnIndex="1" />
       <PieChart fx:id="pieChartPrescriptions" GridPane.columnIndex="1" />
-      <Button fx:id="backButton" mnemonicParsing="false" text="Zurück" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
+      <Button fx:id="backButton" mnemonicParsing="false" text="Zurück" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets top="15.0" />
+         </GridPane.margin></Button>
       <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="203.0" />
