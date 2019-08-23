@@ -40,6 +40,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
 
 
 /**
@@ -243,8 +244,23 @@ public class SettingsViewController extends Controller {
 		searchButton.addEventHandler(ActionEvent.ANY, this.chooseFileHandler);
 		createReportButton.addEventHandler(ActionEvent.ANY, this.saveSettingsAndContinueHandler);
 		fileTextField.textProperty().addListener(this.fileChangeListener);
-//		dayDropDownButton.
-		
+		dayDropDownButton.setConverter(new StringConverter<Date>() {
+			
+			@Override
+			public String toString(Date date) {
+				return MainController.SIMPLE_DATE_FORMAT.format(date);
+			}
+			
+			@Override
+			public Date fromString(String string) {
+				try {
+					return MainController.SIMPLE_DATE_FORMAT.parse(string);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				return null;
+			}
+		});
 	}
 
 	/**
