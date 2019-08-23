@@ -139,13 +139,20 @@ public class ReportViewController extends Controller {
 			sumPrescriptions+=bean.getAnzVerschreibungen();
 		}
 		
-		sumOfPrices.setText(String.valueOf(sumPrices));
-		sumOfPrescriptions.setText(String.valueOf(sumPrescriptions));
 		StringBuilder builder = new StringBuilder();
-		builder.append("Gesamtkosten der Auswahl: " + sumPrices);
+		builder.append("Gesamtkosten der Auswahl: " + (Math.round(sumPrices*100.0)/100.0));
 		builder.append(System.getProperty("line.separator"));
 		builder.append("Anzahl der Verschreibungen in der Auswahl: " +sumPrescriptions);
 		informationOutputField.setText(builder.toString());
+		
+		sumPrices = 0;
+		sumPrescriptions = 0;
+		for (MedikamentProTagBean bean : getMainController().getReportInformations().getMedikamentProTagList()) {
+			sumPrices+=bean.getGesamtkosten();
+			sumPrescriptions+=bean.getAnzVerschreibungen();
+		}
+		sumOfPrices.setText(String.valueOf((Math.round(sumPrices*100.0)/100.0)));
+		sumOfPrescriptions.setText(String.valueOf(sumPrescriptions));
 	}
 
 	@Override
