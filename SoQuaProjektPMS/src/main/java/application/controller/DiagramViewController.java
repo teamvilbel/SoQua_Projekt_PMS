@@ -57,7 +57,10 @@ public class DiagramViewController extends Controller {
     firstPieChart = true;
   }
 
-  private void showFirstPieChart() {
+  /**
+ * Anzeige des Kreisdiagramms nach Kosten
+ */
+private void showFirstPieChart() {
     double gesamtkosten = 0d;
     ObservableList<Data> pieChartData = FXCollections.observableArrayList();
     Map<String, Double> map = new HashMap<>();
@@ -89,7 +92,10 @@ public class DiagramViewController extends Controller {
 
 
 
-  private void showSecondPieChart() {
+  /**
+ * Anzeige des Kreisdiagramms nach Anzahl der Verschreibungen
+ */
+private void showSecondPieChart() {
     int gesamtVerschreibungen = 0;
     ObservableList<Data> pieChartData = FXCollections.observableArrayList();
     Map<String, Integer> map = new HashMap<>();
@@ -121,7 +127,10 @@ public class DiagramViewController extends Controller {
     pieChartPrescriptions.setVisible(true);
   }
 
-  private void showPieChart() {
+  /**
+ * Setzen des Booleans für die Anzeige des Kreisdiagramms
+ */
+private void showPieChart() {
     if (firstPieChart) {
       showFirstPieChart();
     } else {
@@ -140,14 +149,20 @@ public class DiagramViewController extends Controller {
     assert toggleButton != null : "fx:id=\"toggleButton\" was not injected: check your FXML file 'DiagramView.fxml'.";
   }
 
-  @Override
+  /**
+ * Initialisierung aller Objekte die vom Controller gebraucht werden.
+ */
+@Override
   public void initialize(URL arg0, ResourceBundle arg1) {
     assertions();
     bindComponents();
     showPieChart();
   }
 
-  @Override
+  /**
+ * Initialisierung aller Objekte die vom Controller gebraucht werden.
+ */
+@Override
   protected void bindComponents() {
     backButton.addEventHandler(ActionEvent.ANY, x -> {
       getMainController().goToReportView();
