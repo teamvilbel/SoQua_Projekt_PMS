@@ -27,6 +27,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -35,6 +36,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.Callback;
@@ -101,6 +103,14 @@ public class SettingsViewController extends Controller {
 
 		@Override
 		public void handle(ActionEvent event) {
+			
+			try {
+				SettingsViewController.this.validateInput();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+				return;
+			}
+			
 			SettingsViewController.this.getMainController().getReportInformations().setCreateDiagramm(new Boolean(diagrammRadioButton.selectedProperty().getValue().toString()));
 			SettingsViewController.this.getMainController().getReportInformations().setSelectedDay(dayDropDownButton.getValue());
 			SettingsViewController.this.getMainController().getReportInformations().setSelectedMedicine(medicationDropDownButton.getValue());
@@ -140,6 +150,16 @@ public class SettingsViewController extends Controller {
 	 */
 	public SettingsViewController(MainController mainController) {
 		super(mainController);
+	}
+
+	protected void validateInput() throws FileNotFoundException {
+		if (this.medikamentProTagList == null || this.medikamentProTagList.isEmpty()) {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Keine Datei angegeben");
+			alert.setHeaderText("Es wurde keine valide Datei angegeben!");
+			alert.showAndWait();
+			throw new FileNotFoundException("Keine valide Datei");
+		}
 	}
 
 	protected void populateMedicineDropDown() {
