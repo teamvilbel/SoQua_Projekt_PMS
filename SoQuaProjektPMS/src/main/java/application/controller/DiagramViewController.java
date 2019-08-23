@@ -11,9 +11,10 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 
+
 /**
- * @author Admin
- *
+ * @author Jean-Paul Edoh
+ * Controller des DiagrammFensters mit Annotationen für die entsprechenden FXML UI-Elemente
  */
 public class DiagramViewController extends Controller {
 	@FXML // ResourceBundle that was given to the FXMLLoader
@@ -42,12 +43,18 @@ public class DiagramViewController extends Controller {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Initialisierung aller Objekte die vom Controller gebraucht werden.
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 *Assertion-Methode prüft ob alle FXML-Komponenten ordnungsgemäß geladen wurden.
+	 */
 	@Override
 	protected void assertions() {
 		assert pieChartCosts != null : "fx:id=\"pieChartCosts\" was not injected: check your FXML file 'DiagramView.fxml'.";
@@ -57,6 +64,9 @@ public class DiagramViewController extends Controller {
 
 	}
 
+	/**
+	 *BindComponents-Methode repräsentiert die Verbindung von den UI-Elementen und den Event-/ActionsHandlern.
+	 */
 	@Override
 	protected void bindComponents() {
 		// TODO Auto-generated method stub
