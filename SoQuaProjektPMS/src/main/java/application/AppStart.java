@@ -13,12 +13,24 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+/**
+ * @author Jean-Paul Edoh
+ * Einstiegspunkt der Applikation. Hier wird die Applikation gestartet und der MainController Initialisiert und gestartet.
+ */
 public class AppStart extends Application {
 
+	
+	/**
+	 * @param args
+	 * Main-Methode der Appstart-Klasse. 
+	 */
 	public static void main(final String[] args) {
 		launch(args);
 	}
 
+	/**
+	 * Die Init-Methode bildet das Exceptionhandling für schwerwiegende Fehler ab und stellt das Fehler-Dialogfenster dar. 
+	 */
 	@Override
 	public void init() throws Exception {
 		Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
@@ -57,12 +69,18 @@ public class AppStart extends Application {
 		super.init();
 	}
 
+	/**
+	 * Setzen des Main-Controllers.
+	 */
 	@Override
 	public void start(final Stage stage){
 		final MainController mainController = new MainController(stage);
 		mainController.start();
 	}
 
+	/**
+	 * Schließen der Applikation.
+	 */
 	@Override
 	public void stop() {
 		System.out.println("Stage is closing");
