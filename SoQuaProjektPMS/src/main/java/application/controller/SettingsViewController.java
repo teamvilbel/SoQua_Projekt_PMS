@@ -41,9 +41,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.Callback;
 
+
 /**
- * @author Admin
- *
+ * @author Jean-Paul Edoh
+ * Controller des EinstellungsFensters mit Annotationen für die entsprechenden FXML UI-Elemente
  */
 public class SettingsViewController extends Controller {
 
@@ -99,6 +100,9 @@ public class SettingsViewController extends Controller {
 		}
 	};
 
+	/**
+	 * Dieser "Handler" speichert die durch den Benutzer getätigten Einstellungen und validiert die ausgewählte Datei.
+	 */
 	private EventHandler<ActionEvent> saveSettingsAndContinueHandler = new EventHandler<ActionEvent>() {
 
 		@Override
@@ -120,6 +124,9 @@ public class SettingsViewController extends Controller {
 		}
 	};
 
+	/**
+	 * Prüft ob die ausgewählte Datei geändert wurde und aktualisiert das Fenster. Anschließend wird das Fenster aktualisiert.
+	 */
 	private ChangeListener<String> fileChangeListener = new ChangeListener<String>() {
 
 		@Override
@@ -152,6 +159,10 @@ public class SettingsViewController extends Controller {
 		super(mainController);
 	}
 
+	/**
+	 * @throws FileNotFoundException
+	 * Prüfung der Dateiauswahl.
+	 */
 	protected void validateInput() throws FileNotFoundException {
 		if (this.medikamentProTagList == null || this.medikamentProTagList.isEmpty()) {
 			Alert alert = new Alert(AlertType.WARNING);
@@ -162,6 +173,9 @@ public class SettingsViewController extends Controller {
 		}
 	}
 
+	/**
+	 * Füllen des DropDownMenüs zur Medikamentenauswahl
+	 */
 	protected void populateMedicineDropDown() {
 		Set<String> mediSet = new HashSet<String>();
 		for (MedikamentProTagBean medikamentProTagBean : medikamentProTagList) {
@@ -172,6 +186,9 @@ public class SettingsViewController extends Controller {
 		}
 	}
 
+	/**
+	 * Füllen des DropDownMenüs zur Tagesauswahl
+	 */
 	protected void populateDayDropDown() {
 		Set<Date> mediSet = new HashSet<Date>();
 		for (MedikamentProTagBean medikamentProTagBean : medikamentProTagList) {
@@ -204,6 +221,9 @@ public class SettingsViewController extends Controller {
 		});
 	}
 
+	/**
+	 *Assertion-Methode prüft ob alle FXML-Komponenten ordnungsgemäß geladen wurden.
+	 */
 	@Override
 	protected void assertions() {
 		assert fileTextField != null : "fx:id=\"fileTextField\" was not injected: check your FXML file 'SettingsView.fxml'.";
@@ -215,6 +235,9 @@ public class SettingsViewController extends Controller {
 
 	}
 
+	/**
+	 *BindComponents-Methode repräsentiert die Verbindung von den UI-Elementen und den Event-/ActionsHandlern.
+	 */
 	@Override
 	protected void bindComponents() {
 		searchButton.addEventHandler(ActionEvent.ANY, this.chooseFileHandler);
@@ -224,6 +247,9 @@ public class SettingsViewController extends Controller {
 		
 	}
 
+	/**
+	 *Initialisierung aller Objekte die vom Controller gebraucht werden.
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		assertions();
