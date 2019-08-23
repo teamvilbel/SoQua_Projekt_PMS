@@ -89,11 +89,11 @@ public class CSVParser {
               // parse first column to date
               date = SIMPLEDATEFORMAT.parse(lineSplit[0]);
             } catch (ParseException parseException) {
-              throw new LineCanNotBeParsedException("Date field is not valide", parseException);
+              throw new LineCanNotBeParsedException("Mindestens ein Datumsfeld ist nicht valide", parseException);
             }
             // second column empty?
             if (lineSplit[1].trim().isEmpty()) {
-              throw new LineCanNotBeParsedException("Medikamentname field is not valide / empty");
+              throw new LineCanNotBeParsedException("Mindestens ein Medikamentname ist nicht valide / leer");
             } else {
               name = lineSplit[1].trim();
             }
@@ -102,7 +102,7 @@ public class CSVParser {
               // parse 3. column to integer
               parseInt = Integer.parseInt(lineSplit[2]);
             } catch (NumberFormatException numberFormatException) {
-              throw new LineCanNotBeParsedException("Anzahl Verschreibungen field is not valide",
+              throw new LineCanNotBeParsedException("Mindestens einmal ist die Anzahl der Verschreibungen nicht valide",
                   numberFormatException);
             }
 
@@ -110,7 +110,7 @@ public class CSVParser {
               // parse 4. column to double
               parseDouble = Double.parseDouble(lineSplit[3].replace(',', '.'));
             } catch (NumberFormatException numberFormatException) {
-              throw new LineCanNotBeParsedException("Einzelpreis field is not valide",
+              throw new LineCanNotBeParsedException("Mindestens ein Einzelpreisfeld ist nicht valide",
                   numberFormatException);
             }
             // add new bean to list
@@ -118,12 +118,12 @@ public class CSVParser {
                 (Math.round(parseInt * parseDouble * 100.0)) / 100.0));
 
           } else {
-            throw new LineCanNotBeParsedException("Not enough valid fields");
+            throw new LineCanNotBeParsedException("Nicht genug valide Felder");
           }
         }
       }
     } catch (IOException ioException) {
-      throw new IOException("Could not read File");
+      throw new IOException("Konnte Datei nicht lesen");
     } finally {
       bufferedReader.close();
     }
