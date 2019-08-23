@@ -262,6 +262,7 @@ public class SettingsViewController extends Controller {
 		searchButton.addEventHandler(ActionEvent.ANY, this.chooseFileHandler);
 		createReportButton.addEventHandler(ActionEvent.ANY, this.saveSettingsAndContinueHandler);
 		fileTextField.textProperty().addListener(this.fileChangeListener);
+		diagrammRadioButton.setSelected(true);
 		dayDropDownButton.setConverter(new StringConverter<Date>() {
 			
 			@Override

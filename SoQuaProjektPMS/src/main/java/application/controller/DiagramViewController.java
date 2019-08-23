@@ -86,7 +86,7 @@ private void showFirstPieChart() {
         .bind(Bindings.concat(data.getName(), " ", data.pieValueProperty(), "%")));
     pieChartCosts.setData(pieChartData);
 
-    pieChartPrescriptions.setVisible(false);
+//    pieChartPrescriptions.setVisible(false);
     pieChartCosts.setVisible(true);
   }
 
@@ -100,7 +100,7 @@ private void showSecondPieChart() {
     ObservableList<Data> pieChartData = FXCollections.observableArrayList();
     Map<String, Integer> map = new HashMap<>();
     Map<String, Double> map2 = new HashMap<>();
-    pieChartPrescriptions.setTitle("Medikament - Verschreibungen Übersicht");
+    pieChartCosts.setTitle("Medikament - Verschreibungen Übersicht");
     for (MedikamentProTagBean medikament : medikamentProTagList) {
       if (map.containsKey(medikament.getMedikamentName())) {
         map.put(medikament.getMedikamentName(),
@@ -121,10 +121,10 @@ private void showSecondPieChart() {
     }
     pieChartData.forEach(data -> data.nameProperty()
         .bind(Bindings.concat(data.getName(), " ", data.pieValueProperty(), "%")));
-    pieChartPrescriptions.setData(pieChartData);
+    pieChartCosts.setData(pieChartData);
 
-    pieChartCosts.setVisible(false);
-    pieChartPrescriptions.setVisible(true);
+//    pieChartCosts.setVisible(false);
+//    pieChartPrescriptions.setVisible(true);
   }
 
   /**
