@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import application.model.MedikamentProTagBean;
 import application.model.ReportInformations;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,11 +19,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 
 /**
- * @author Jean-Paul Edoh
+ * @author Noah Ruben, Jean-Paul Edoh
+ * 
  * Controller des BerichtsFensters mit Annotationen für die entsprechenden FXML UI-Elemente
  */
 public class ReportViewController extends Controller {
@@ -184,7 +188,7 @@ public class ReportViewController extends Controller {
 			getMainController().goToDiagramView();
 		});
 		diagramButton.setVisible(getMainController().getReportInformations().isCreateDiagramm());
-		dayColumn.setCellValueFactory(new PropertyValueFactory<>("tag"));
+		dayColumn.setCellValueFactory(new PropertyValueFactory<>("tagAsFormattedString"));
 		medicineColumn.setCellValueFactory(new PropertyValueFactory<>("medikamentName"));
 		prescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("anzVerschreibungen"));
 		priceColumn.setCellValueFactory(new PropertyValueFactory<>("gesamtkosten"));

@@ -1,6 +1,8 @@
 package application.model;
 import java.util.Date;
 
+import application.controller.MainController;
+
 /**
  * @author Noah Ruben Marvin Jakob <p>
  * 
@@ -45,6 +47,13 @@ public class MedikamentProTagBean {
 	 */
 	public Date getTag() {
 		return tag;
+	}
+	
+	/**
+	 * @return the tag as a string formatted.
+	 */
+	public String getTagAsFormattedString() {
+		return MainController.SIMPLE_DATE_FORMAT.format(getTag());
 	}
 
 	/**
