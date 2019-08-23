@@ -20,9 +20,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+
 /**
- * @author Admin
- *
+ * @author Jean-Paul Edoh
+ * Controller des BerichtsFensters mit Annotationen für die entsprechenden FXML UI-Elemente
  */
 public class ReportViewController extends Controller {
 	@FXML // ResourceBundle that was given to the FXMLLoader
@@ -130,6 +131,7 @@ public class ReportViewController extends Controller {
 
 	/**
 	 * @param list
+	 * Kalkuliert die Gesamtkosten des Monats
 	 */
 	private void calculateSums(ObservableList<MedikamentProTagBean> list) {
 		double sumPrices = 0;
@@ -155,6 +157,9 @@ public class ReportViewController extends Controller {
 		sumOfPrescriptions.setText(String.valueOf(sumPrescriptions));
 	}
 
+	/**
+	 *Assertion-Methode prüft ob alle FXML-Komponenten ordnungsgemäß geladen wurden.
+	 */
 	@Override
 	protected void assertions() {
 		assert tableField != null : "fx:id=\"tableField\" was not injected: check your FXML file 'ReportView.fxml'.";
@@ -169,6 +174,9 @@ public class ReportViewController extends Controller {
 		assert diagramButton != null : "fx:id=\"diagramButton\" was not injected: check your FXML file 'ReportView.fxml'.";
 	}
 
+	/**
+	 *BindComponents-Methode repräsentiert die Verbindung von den UI-Elementen und den Event-/ActionsHandlern.
+	 */
 	@Override
 	protected void bindComponents() {
 		backButton.addEventHandler(ActionEvent.ANY, this.backToSettingsHandler);
