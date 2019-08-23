@@ -29,7 +29,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ToggleButton fx:id="toggleButton" mnemonicParsing="false" prefHeight="68.0" prefWidth="149.0" text="Wechsle Ansicht" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+            <ToggleButton fx:id="toggleButton" mnemonicParsing="false" prefHeight="68.0" prefWidth="149.0" text="Ansicht wechseln" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
    </children>
